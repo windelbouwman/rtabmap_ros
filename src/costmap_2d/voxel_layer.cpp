@@ -78,7 +78,7 @@ void VoxelLayer::setupDynamicReconfigure(ros::NodeHandle& nh)
 {
   voxel_dsrv_ = new dynamic_reconfigure::Server<VoxelPluginConfig>(nh);
   dynamic_reconfigure::Server<VoxelPluginConfig>::CallbackType cb = boost::bind(
-      &VoxelLayer::reconfigureCB, this, _1, _2);
+      &VoxelLayer::reconfigureCB, this, boost::placeholders::_1, boost::placeholders::_2);
   voxel_dsrv_->setCallback(cb);
 }
 
